@@ -6,3 +6,4 @@ WORKDIR /usr/app/src
 
 COPY *.json /python/
 COPY insert_values.py ./
+COPY first_query.py ./
