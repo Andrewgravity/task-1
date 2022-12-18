@@ -4,5 +4,5 @@ RUN pip install mysql-connector-python
 
 WORKDIR /usr/app/src
 
-COPY insert_values.py ./
 COPY *.json /python/
+COPY insert_values.py ./

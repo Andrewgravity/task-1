@@ -1,6 +1,6 @@
 use db;
 
-CREATE TABLE IF NOT EXISTS students(
+CREATE TABLE students(
     BIRTHDAY DATE NOT NULL,
     ID INT,
     NAME VARCHAR(50) NOT NULL,
@@ -8,6 +8,11 @@ CREATE TABLE IF NOT EXISTS students(
     SEX VARCHAR(5) NOT NULL,
     FOREIGN KEY (ROOM_ID) REFERENCES rooms (ID) ON DELETE SET NULL
 
+);
+
+CREATE TABLE rooms(
+    ID INT NOT NULL PRIMARY KEY,
+    NAME VARCHAR(50) NOT NULL
 );
 
 -- INSERT INTO students(birthday, id, name, room, sex)
