@@ -1,11 +1,5 @@
 services:
-  python:
-    build: ./python/ # use python folder
-    command: sh -c 'sleep 5s ; python3 ./insert_values.py'
-    depends_on:
-    - mysql
-
-  mysql:
+  db-server:
     build: ./mysql/ # use mysql folder
     restart: always
     environment:
@@ -13,5 +7,13 @@ services:
       MYSQL_ROOT_PASSWORD: 'root'
     ports:
       - '3306:3306'
+
+  app:
+    build: ./python/ # use python folder
+    command: sh -c 'sleep 5s ; python3 ./insert_values.py; python3 ./main.py'
+    depends_on:
+    - db-server
+
+
     # volumes: # run the sql script (optinal cause I already have a run script in Dockerfile)
     #   - ./mysql:/docker-entrypoint-initdb.d
